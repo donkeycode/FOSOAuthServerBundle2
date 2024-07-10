@@ -42,7 +42,7 @@ class AccessTokenBadge implements BadgeInterface
     /**
      * @return AccessToken
      */
-    public function getAccessToken(): AccessToken
+    public function getAccessToken(): TokenInterface
     {
         return $this->AccessToken;
     }
