@@ -43,7 +43,7 @@ class Oauth2Authenticator extends AbstractAuthenticator
      */
     public function supports(Request $request): ?bool
     {
-        return $request->headers->has('Authorization');
+        return $request->headers->has('Authorization') || $request->query->has('access_token');
     }
 
     /**
@@ -52,8 +52,11 @@ class Oauth2Authenticator extends AbstractAuthenticator
     public function authenticate(Request $request): PassportInterface
     {
         try {
-            $tokenString = str_replace('Bearer ', '', $request->headers->get('Authorization'));
-
+            if ($request->headers->has('Authorization')) {
+                $tokenString = str_replace('Bearer ', '', $request->headers->get('Authorization'));
+            } else {
+                $tokenString = $request->query->get('access_token');
+            }
             /** @var AccessToken $accessToken */
             $accessToken = $this->serverService->verifyAccessToken($tokenString);
 
