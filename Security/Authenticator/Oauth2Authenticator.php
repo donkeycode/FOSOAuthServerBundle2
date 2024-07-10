@@ -90,7 +90,7 @@ class Oauth2Authenticator extends AbstractAuthenticator
             $roles = array_unique($roles, SORT_REGULAR);
             $accessTokenBadge = new AccessTokenBadge( $accessToken, $roles );
 
-            return new SelfValidatingPassport( new UserBadge( $client->getUserIdentifier() ), [ $accessTokenBadge ] );
+            return new SelfValidatingPassport( new UserBadge( $user->getUserIdentifier() ), [ $accessTokenBadge ] );
         } catch (OAuth2ServerException $e) {
             throw new AuthenticationException('OAuth2 authentication failed', 0, $e);
         }
