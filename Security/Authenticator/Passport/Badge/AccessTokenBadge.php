@@ -5,6 +5,7 @@ namespace FOS\OAuthServerBundle\Security\Authenticator\Passport\Badge;
 
 
 use FOS\OAuthServerBundle\Model\AccessToken;
+use FOS\OAuthServerBundle\Model\TokenInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\BadgeInterface;
 
 class AccessTokenBadge implements BadgeInterface
@@ -24,7 +25,7 @@ class AccessTokenBadge implements BadgeInterface
      * @param AccessToken $AccessToken
      * @param array $roles
      */
-    public function __construct( AccessToken $AccessToken, array $roles )
+    public function __construct(TokenInterface $AccessToken, array $roles )
     {
         $this->AccessToken = $AccessToken;
         $this->roles = $roles;

@@ -67,6 +67,7 @@ class Oauth2Authenticator extends AbstractAuthenticator
                 try {
                     $this->userChecker->checkPreAuth($user);
                 } catch (AccountStatusException $e) {
+
                     throw new OAuth2AuthenticateException(
                         Response::HTTP_UNAUTHORIZED,
                         OAuth2::TOKEN_TYPE_BEARER,
@@ -87,7 +88,6 @@ class Oauth2Authenticator extends AbstractAuthenticator
             }
 
             $roles = array_unique($roles, SORT_REGULAR);
-
             $accessTokenBadge = new AccessTokenBadge( $accessToken, $roles );
 
             return new SelfValidatingPassport( new UserBadge( $client->getUserIdentifier() ), [ $accessTokenBadge ] );
