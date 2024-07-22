@@ -21,7 +21,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "doctrine/doctrine-bundle": "~2.0",
         "klapaudius/oauth2-php": "~1.4",
         "symfony/dependency-injection": "~6.0",
         "symfony/form": "~6.0",
@@ -30,6 +29,7 @@
         "symfony/twig-bundle": "~6.0"
     },
     "require-dev": {
+        "doctrine/doctrine-bundle": "~2.0",
         "doctrine/mongodb-odm": "~2.0",
         "doctrine/orm": "~2.2",
         "friendsofphp/php-cs-fixer": "^3.0",
