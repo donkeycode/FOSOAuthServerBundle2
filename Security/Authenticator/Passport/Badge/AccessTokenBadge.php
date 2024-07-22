@@ -13,19 +13,19 @@ declare(strict_types=1);
 
 namespace FOS\OAuthServerBundle\Security\Authenticator\Passport\Badge;
 
-use FOS\OAuthServerBundle\Model\AccessToken;
+use FOS\OAuthServerBundle\Model\AccessTokenInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\BadgeInterface;
 
 class AccessTokenBadge implements BadgeInterface
 {
-    private AccessToken $AccessToken;
+    private AccessTokenInterface $AccessToken;
 
     private array $roles;
 
     /**
      * AccessTokenBadge constructor.
      */
-    public function __construct(AccessToken $AccessToken, array $roles)
+    public function __construct(AccessTokenInterface $AccessToken, array $roles)
     {
         $this->AccessToken = $AccessToken;
         $this->roles = $roles;
@@ -39,7 +39,7 @@ class AccessTokenBadge implements BadgeInterface
         return !empty($this->roles);
     }
 
-    public function getAccessToken(): AccessToken
+    public function getAccessToken(): AccessTokenInterface
     {
         return $this->AccessToken;
     }
